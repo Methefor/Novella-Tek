@@ -1,9 +1,5 @@
 'use client';
 
-import { AnimatePresence, motion } from 'framer-motion';
-import { ChevronDown, Menu } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
 import { Logo } from '@/components/brand';
 import { CartButton } from '@/components/cart';
 import { FavoritesButton } from '@/components/favorites';
@@ -11,6 +7,10 @@ import { SearchButton } from '@/components/search';
 import { Container, LanguageSwitcher, ThemeToggle } from '@/components/ui';
 import { useLocale, useTranslations } from '@/lib/i18n-client';
 import { useAppStore } from '@/store';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ChevronDown, Menu } from 'lucide-react';
+import Link from 'next/link';
+import { useEffect, useRef, useState } from 'react';
 
 // Smooth scroll function
 const scrollToSection = (sectionId: string) => {
@@ -20,7 +20,7 @@ const scrollToSection = (sectionId: string) => {
     const elementPosition = element.offsetTop - offset;
     window.scrollTo({
       top: elementPosition,
-      behavior: 'smooth'
+      behavior: 'smooth',
     });
   }
 };
@@ -42,7 +42,10 @@ export function Header() {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setIsDropdownOpen(false);
       }
     };
@@ -53,12 +56,17 @@ export function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-background/95 backdrop-blur-md shadow-md' : 'bg-transparent'
+        isScrolled
+          ? 'bg-background/95 backdrop-blur-md shadow-md'
+          : 'bg-transparent'
       }`}
     >
       <Container>
         <div className="flex items-center justify-between h-16 md:h-20">
-          <button onClick={() => scrollToSection('home')} className="transition-transform hover:scale-105">
+          <button
+            onClick={() => scrollToSection('home')}
+            className="transition-transform hover:scale-105"
+          >
             <Logo />
           </button>
 
